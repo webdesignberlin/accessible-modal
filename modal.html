@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Accessible Modal Dialog</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="dialog.scss">
+</head>
+<body>
+  <div class="modal"
+           id="modal"
+           role="dialog"
+           aria-labelledby="modal__title"
+           aria-describedby="modal__description"
+           aria-hidden="true">
+
+  <div class="modal__content">
+    <h1 id="modal__title">Headline</h1>
+    <p id="modal__description" class="sr-only">Description goes here</p>
+    <nav>
+      <ul>
+        <li><a href="one.html">Link One</a></li>
+        <li><a href="two.html">Link Two</a></li>
+        <li><a href="three.html">Link Three</a></li>
+      </ul>
+    </nav>
+
+    <h1>Modal Example</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+
+    <input type="text">
+
+    <h1>Modal Example</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>otam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+
+    <h1>Modal Example</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+
+    <h1>Modal Example</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+
+  </div>
+  <button class="modal__close" aria-label="Close Modal">Close Modal</button>
+</div>
+
+<div class="modal"
+     id="modal-2"
+     role="dialog"
+     aria-labelledby="modal-2__title"
+     aria-describedby="modal-2__description"
+     aria-hidden="true">
+
+  <div class="modal__content">
+    <h1 id="modal-2__title">Headline 2</h1>
+    <p id="modal-2__description" class="sr-only">Description goes here</p>
+
+    <h1>Modal Example 2</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae expedita corrupti laudantium aperiam, doloremque explicabo ipsum earum dicta saepe delectus totam vitae ipsam doloribus et obcaecati facilis eius assumenda, cumque.</p>
+
+  </div>
+  <button class="modal__close" aria-label="Close Modal">Close Modal</button>
+</div>
+
+<a id="open-modal"
+   href="#modal"
+   class="open-modal"
+   aria-label="Open Modal">Open Modal</a>
+
+<a id="open-modal"
+   href="#modal-2"
+   class="open-modal"
+   aria-label="Open Modal 2">Open Modal 2</a>
+
+<div class="modal-overlay" tabindex="-1" aria-hidden="true"></div>
+
+<script src="modal.js"></script>
+<script>
+  const dialogTriggers = document.querySelectorAll('.open-modal');
+
+  for (let dialogTrigger of dialogTriggers) {
+    let dialogOverlay = document.querySelector('.modal-overlay');
+    // get target id via href hash
+    let targetDialog = document.getElementById(dialogTrigger.hash.substr(1));
+    let dialog = new Dialog(targetDialog, dialogOverlay);
+    dialog.addEventListeners(dialogTrigger, '.modal__close');
+  }
+</script>
+</body>
+</html>
